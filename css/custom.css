@@ -1,0 +1,9 @@
+@charset "utf-8";
+/* CSS Document */
+
+#texto-intro p {
+	color:#fff; 
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+}
+
+#texto-intro h1 {text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);}
