@@ -256,7 +256,7 @@
         <div class="row">
           <div class="col-md-6 col-md-offset-3">
             <div class="probootstrap-card probootstrap-animate">
-              <form class="probootstrap-form" action="mailto:marques.larice@hotmail.com" method="post" enctype="text/plain">
+              <form class="probootstrap-form">
                 <div class="form-group">
                   <label for="name">Nome</label>
                   <input type="text" class="form-control" id="name">
@@ -275,7 +275,7 @@
                   <textarea name="" id="note" cols="20" rows="5" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
-                  <input type="submit" class="btn btn-primary btn-lg" value="Enviar Confirmação">
+                  <input type="button" id="sendmail" class="btn btn-primary btn-lg" value="Enviar Confirmação">
                 </div>
               </form>
             </div>
@@ -318,10 +318,41 @@
 
     <script src="js/scripts.min.js"></script>
     <script src="js/custom.min.js"></script>
+    <script
+    src="http://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous">
+    </script>
 
     <!-- Google Map -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="js/google-map.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        $('#sendmail').click(function (event) {
+          var email = $("#email").val();
+          var subject = '';
 
+          if($("#yes").is(':checked')){
+            subject = $("#nome").val() + " irá ao casamento";
+          }
+          else{
+            subject = $("#nome").val() + " não irá ao casamento";
+          }
+
+          var emailBody = $("#note").val();
+      
+          document.location = "mailto:"+email+"?subject="+subject+"&body="+emailBody;
+        });
+
+        $("#yes").click(function(){
+          $("#no").prop("checked", false);
+        });
+
+        $("#no").click(function(){
+          $("#yes").prop("checked", false);
+        });
+      });
+    </script>
   </body>
 </html>
