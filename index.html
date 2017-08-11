@@ -341,18 +341,22 @@
           var emailBody = $("#note").val();
       
           $.ajax({
+            headers: { 
+                'Accept': 'application/json',
+                'Content-Type': 'application/json' 
+            },
             type: "POST",
             url: "http://weddingmailsenderapi.azurewebsites.net/api/send",
-            data: {
+            data: JSON.stringify({
               Name: name,
               Email: email,
               Text: emailBody,
               willAttend: willAttend
-            },
+            }),
+            dataType: "json",            
             success: function(data){
               $("#formbox").html("<strong>Mensagem enviada!</strong>")
-            },
-            dataType: "json"
+            }
           });
         });
 
