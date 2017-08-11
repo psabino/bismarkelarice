@@ -323,5 +323,32 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="js/google-map.js"></script>
     
+    <script type="text/javascript">
+      $(function () {
+        $('#sendmail').click(function (event) {
+          var email = $("#email").val();
+          var subject = '';
+
+          if($("#yes").is(':checked')){
+            subject = $("#nome").val() + " irá ao casamento";
+          }
+          else{
+            subject = $("#nome").val() + " não irá ao casamento";
+          }
+
+          var emailBody = $("#note").val();
+      
+          document.location = "mailto:"+email+"?subject="+subject+"&body="+emailBody;
+        });
+
+        $("#yes").click(function(){
+          $("#no").prop("checked", false);
+        });
+
+        $("#no").click(function(){
+          $("#yes").prop("checked", false);
+        });
+      });
+    </script>
   </body>
 </html>
