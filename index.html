@@ -346,7 +346,7 @@
                 'Content-Type': 'application/json' 
             },
             type: "POST",
-            url: "http://weddingmailsenderapi.azurewebsites.net/api/send",
+            url: "http://localhost:10865/api/send",
             data: JSON.stringify({
               Name: name,
               Email: email,
@@ -355,9 +355,11 @@
             }),
             dataType: "json",            
             success: function(data){
-              $("#formbox").html("<strong>Mensagem enviada!</strong>")
+              
             }
           });
+
+          $("#formbox").html("<strong>Mensagem enviada!</strong>");
         });
 
         $("#yes").click(function(){
