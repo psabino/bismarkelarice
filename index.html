@@ -262,10 +262,6 @@
                   <input type="text" class="form-control" id="name">
                 </div>
                 <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="text" class="form-control" id="email">
-                </div>
-                <div class="form-group">
                   <p>Confirmar presença?</p>
                   <label for="yes"><input type="checkbox" id="yes"> Sim, estarei lá.</label> <br>
                   <label for="no"><input type="checkbox" id="no"> Desculpe, não poderei ir.</label> <br>
@@ -326,14 +322,14 @@
     <script type="text/javascript">
       $(function () {
         $('#sendmail').click(function (event) {
-          var email = $("#email").val();
+          var email = "julianasab@gmail.com";
           var subject = '';
 
           if($("#yes").is(':checked')){
-            subject = $("#nome").val() + " irá ao casamento";
+            subject = $("#name").val() + " irá ao casamento";
           }
           else{
-            subject = $("#nome").val() + " não irá ao casamento";
+            subject = $("#name").val() + " não irá ao casamento";
           }
 
           var emailBody = $("#note").val();
