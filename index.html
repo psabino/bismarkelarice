@@ -255,7 +255,7 @@
         </div>
         <div class="row">
           <div class="col-md-6 col-md-offset-3">
-            <div class="probootstrap-card probootstrap-animate">
+            <div id="formbox" class="probootstrap-card probootstrap-animate">
               <form class="probootstrap-form">
                 <div class="form-group">
                   <label for="name">Nome</label>
@@ -324,17 +324,29 @@
         $('#sendmail').click(function (event) {
           var email = "julianasab@gmail.com";
           var subject = '';
+          var name = $("#name").val();
 
           if($("#yes").is(':checked')){
-            subject = $("#name").val() + " irá ao casamento";
+            subject = name + " irá ao casamento";
           }
           else{
-            subject = $("#name").val() + " não irá ao casamento";
+            subject = name + " não irá ao casamento";
           }
 
           var emailBody = $("#note").val();
       
-          document.location = "mailto:"+email+"?subject="+subject+"&body="+emailBody;
+          $.ajax({
+            type: "POST",
+            url: "http://weddingmailsenderapi.azurewebsites.net/send",
+            data: {
+              Name: name,
+              Email: email,
+              Text: emailBody
+            },
+            success: function(data){
+              $("#formbox").html("<strong>Mensagem enviada!</strong>")
+            }
+          });
         });
 
         $("#yes").click(function(){
